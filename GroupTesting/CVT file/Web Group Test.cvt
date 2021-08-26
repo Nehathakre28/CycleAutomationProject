@@ -1,0 +1,11 @@
+[ {
+  "resources" : "..\\..",
+  "classes" : [ ],
+  "namespaces" : [ ]
+}, {
+  "name" : "Cycle automation",
+  "feature" : "..\\Web Group Testing.feature",
+  "devices" : "..\\..\\Datasets\\Testdata.csv",
+  "tags" : "",
+  "enabled" : "true"
+} ]

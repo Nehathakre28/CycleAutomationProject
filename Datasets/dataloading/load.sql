@@ -1,0 +1,1 @@
+INSERT INTO `example`.`employee` (Employeename) VALUES ('Cycle');

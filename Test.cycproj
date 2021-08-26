@@ -1,0 +1,37 @@
+{
+  "projectMetaData" : {
+    "name" : "Test",
+    "compatibilityVersion" : "2.8.0"
+  },
+  "settings" : {
+    "FeatureFailureStrategy" : "FEATURE",
+    "StepDelay" : 0,
+    "DefaultTerminalConnectWithin" : 90000,
+    "NonActionStepDelay" : 0,
+    "CaptureImageWidth" : 40,
+    "CaptureImageHeight" : 40,
+    "DefaultWithinGui" : 10000,
+    "KeystrokeDelay" : 0,
+    "SSLValidation" : "Default",
+    "KeyMappingFile" : null,
+    "VariableBlackListEnabled" : false,
+    "GroupTestFailureStrategy" : "ALL_TESTS",
+    "ControlVisPaste" : true,
+    "DefaultWithinTerminal" : 100,
+    "OnceWaitTime" : 120000,
+    "TruststorePath" : null,
+    "ImageMatchCorrelation" : 0,
+    "ImageMatchAllDisplays" : false,
+    "TerminalSendSingleLF" : false,
+    "StoredConnections" : [ ],
+    "RemoteWebDriverHeadlessKey" : false,
+    "WaitDurationBeforeRestart" : 5000,
+    "MinimizeCycleDuringTest" : false,
+    "TerminalSteadyStateDuration" : 1000,
+    "SkipMocaCertValidation" : false,
+    "PlaylistFailureStrategy" : "ALL_TESTS",
+    "VariableBlackList" : [ ],
+    "VariableBlackListMask" : "********",
+    "SaveMatchedImages" : false
+  }
+}

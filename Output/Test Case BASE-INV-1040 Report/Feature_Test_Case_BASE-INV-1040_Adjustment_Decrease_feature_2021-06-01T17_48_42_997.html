@@ -1,0 +1,1183 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    /* CSS RESET */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .85rem; }
+
+h1 {
+  font-size: 34px;
+  font-weight: 100; }
+
+h2, .h2 {
+  font-size: 30px;
+  font-weight: 100; }
+
+h3, .h3 {
+  font-size: 28px;
+  font-weight: 100; }
+
+h4 {
+  font-size: 24px; }
+
+h5 {
+  font-size: 20px; }
+
+h6 {
+  font-size: 18px; }
+
+small {
+  font-size: 80%;
+  color: #949799; }
+
+.label, .list ul li label {
+  font-size: .65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #a0a1a2;
+  letter-spacing: .1rem; }
+  .label.sub, .list ul li label.sub {
+    font-style: italic;
+    font-weight: 400;
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    line-height: .8rem; }
+
+.chart {
+  flex: none;
+  margin-right: 4rem; }
+  .chart.small {
+    margin-right: 2rem; }
+    .chart.small .donut {
+      stroke-width: 70; }
+  .chart svg {
+    transform: rotate(-90deg);
+    background: #27517B;
+    border-radius: 50%; }
+    .chart svg .hole {
+      fill: white; }
+    .chart svg .donut {
+      fill: none;
+      stroke: #3F7ABE;
+      stroke-width: 128; }
+    .chart svg .filling {
+      fill: none;
+      stroke: #A5B9DD;
+      stroke-width: 128; }
+
+.list {
+  flex: 1;
+  align-self: center; }
+  .list.large li {
+    padding: 1rem 0; }
+  .list.large span {
+    font-size: 1.25rem;
+    font-weight: 100; }
+  .list.large label {
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .125rem; }
+  .list ul {
+    width: 100%; }
+    .list ul li {
+      min-height: 1.35rem;
+      border-bottom: 1px solid #d4d4d4;
+      padding: .65rem 0;
+      clear: both;
+      font-size: .9rem; }
+      .list ul li:last-child {
+        border-bottom: none; }
+      .list ul li.header {
+        padding: 0; }
+        .list ul li.header label {
+          padding: 0 0 .5rem 0; }
+      .list ul li span {
+        float: right; }
+    .list ul.multi-col li {
+      display: flex;
+      flex-wrap: wrap; }
+      .list ul.multi-col li label, .list ul.multi-col li div, .list ul.multi-col li a {
+        flex: 1;
+        padding: 0;
+        min-width: 1px; }
+        .list ul.multi-col li label:first-child, .list ul.multi-col li div:first-child, .list ul.multi-col li a:first-child {
+          flex: 6; }
+        .list ul.multi-col li label.end, .list ul.multi-col li div.end, .list ul.multi-col li a.end {
+          text-align: right; }
+      .list ul.multi-col li .step-image {
+        flex-basis: 100%;
+        margin: 1.35rem 0 3rem;
+        flex-wrap: wrap;
+         padding: 8px 16px 16px; }
+        .list ul.multi-col li .step-image .container {
+          display: flex; }
+        .list ul.multi-col li .step-image .target, .list ul.multi-col li .step-image .screenshot {
+          flex: 1; }
+          .list ul.multi-col li .step-image .target label, .list ul.multi-col li .step-image .screenshot label {
+            display: block;
+            margin-bottom: .5rem; }
+          .list ul.multi-col li .step-image .target + div, .list ul.multi-col li .step-image .screenshot + div {
+            margin-left: 1rem; }
+        .list ul.multi-col li .step-image .screenshot {
+          flex: 4; }
+        .list ul.multi-col li .step-image img {
+          max-width: 100%;
+          height: auto; }
+        .list ul.multi-col li .step-image .controls {
+          clear: both;
+        }
+        .list ul.multi-col li .step-image .controls .close {
+          font-size: 24px;
+          float: right;
+          margin-bottom: 4px
+
+        }
+
+table {
+  width: 100%;
+  text-align: left;
+  font-size: .9rem; }
+  table thead {
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #a0a1a2;
+    letter-spacing: .1rem;
+    border-bottom: 1px solid #d4d4d4; }
+    table thead th {
+      padding: 0 0 .5rem 0; }
+      table thead th:last-of-type {
+        text-align: right; }
+    table thead .sub {
+      font-style: italic;
+      font-weight: 400; }
+      table thead .sub th {
+        text-align: left; }
+  table tbody tr {
+    border-bottom: 1px solid #d4d4d4; }
+    table tbody tr:last-child {
+      border-bottom: 0px; }
+    table tbody tr td {
+      padding: .65rem 0; }
+      table tbody tr td:last-child {
+        text-align: right; }
+      table tbody tr td a {
+        display: block; }
+      table tbody tr td .label, table tbody tr td .list ul li label, .list ul li table tbody tr td label {
+        white-space: nowrap; }
+
+.failed-step {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap; }
+  .failed-step .list {
+    min-width: 20%;
+    flex: 2;
+    align-self: flex-start; }
+  .failed-step .image-results {
+    flex: 1;
+    padding-left: 1rem;
+    vertical-align: top; }
+    .failed-step .image-results li[class^="image-"] {
+      border-bottom: 0; }
+    .failed-step .image-results img {
+      max-width: 100%;
+      height: auto; }
+
+#logo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right; }
+  #logo img {
+    max-height: 3.125rem;
+    margin: 1rem 0; }
+  #logo #metadata p + p {
+    margin-top: .35rem; }
+
+body, table {
+  font-family: "Open Sans";
+  color: #555759; }
+
+section {
+  margin-bottom: 5rem; }
+
+a {
+  text-decoration: none;
+  color: #27517B;
+  transition: .25s ease-in-out; }
+  a:hover {
+    color: #A5B9DD; }
+
+#container {
+  max-width: 60rem;
+  margin: auto; }
+
+header {
+  width: 100%;
+  padding-top: .75rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #d4d4d4; }
+  header span {
+    float: right; }
+    header span.face-up {
+      transform: rotate(-90deg);
+      margin-right: .5rem; }
+  header .open {
+    float: right; }
+    header .open:hover {
+      opacity: .65; }
+  header .label, header .list ul li label, .list ul li header label {
+    margin-bottom: .5rem; }
+
+.collection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .collection .collection-item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 4rem; }
+    .collection .collection-item:nth-child(odd) {
+      padding-right: 1rem; }
+    .collection .collection-item:nth-child(even) {
+      padding-left: 1rem; }
+    .collection .collection-item header {
+      margin-bottom: 1rem; }
+    .collection .collection-item .donut {
+      margin-right: 2rem; }
+
+.hero {
+  display: flex;
+  flex-wrap: wrap; }
+  .hero .title-group {
+    width: 100%; }
+    .hero .title-group:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .hero h1 {
+    width: 100%;
+    max-width: 85%;
+    padding-bottom: .35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left; }
+  .hero h5 {
+    word-break: break-all; }
+
+.allow-breaks {
+  word-break: break-all; }
+
+.red {
+  color: #ff314e; }
+
+#test {
+  position: relative; }
+
+.error-counter {
+  display: flex;
+  align-items: center;
+  max-width: 10rem; }
+  .error-counter p {
+    font-size: 1.12rem;
+    color: #ff314e; }
+  .error-counter svg {
+    margin-left: .5rem; }
+
+div[id^="step-image-id-"] {
+  display: none;
+}
+
+div[id^="step-image-id-"]:target {
+  position: fixed;
+  width: 50rem;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex !important;
+  padding: 1rem;
+  margin-top: 0;
+  justify-content: center;
+  z-index: 4;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+
+#error-summary {
+  display: none; }
+  #error-summary:target {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+    justify-content: center;
+    z-index: 4;
+    background-color: white;
+    overflow: scroll; }
+  #error-summary .error-list {
+    width: 80%;
+    margin-bottom: 4rem; }
+  #error-summary .control {
+    width: 100%;
+    height: 2rem;
+    clear: both;
+    margin-bottom: 1rem; }
+  #error-summary .close {
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 100; }
+  #error-summary .list .multi-col .header label:first-child {
+    flex: 1; }
+  #error-summary .list .multi-col li div:first-child {
+    flex: 1; }
+    #error-summary .list .multi-col li div:first-child .label, #error-summary .list .multi-col ul li div:first-child label, #error-summary .list ul .multi-col li div:first-child label {
+      margin-top: .35rem; }
+  #error-summary .list .multi-col li div:last-child {
+    text-align: right; }
+
+/* MEDIA QUERIES */
+@media print {
+  .step-image {
+    display: flex !important; }
+
+  .hide-for-print {
+    display: none !important; } }
+@media screen and (max-width: 1056px) {
+  #container {
+    margin: auto 3rem; } }
+@media screen and (max-width: 860px) {
+  .collection .collection-item {
+    width: 100%;
+    padding: 0 !important; }
+
+  .chart:not(.small) {
+    margin: auto; }
+
+  .list.large {
+    flex: none;
+    width: 100%; }
+
+  .error {
+    flex-direction: column; }
+    .error > .list {
+      margin-bottom: 1rem; }
+    .error .image-results {
+      padding-left: 0; } }
+
+    </style>
+
+<title>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</title>
+</head>
+
+<body>
+<div id="container">
+  <div id="logo">
+  <img src="data:image/png;base64,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" />
+
+    <aside id="metadata">
+        <p class="label">1 Jun, 2021 5:45 PM</p>
+        <p class="label">cycle-gui</p></small></h5>
+    </aside>
+  </div>
+<section id="feature-main-0-Feature">
+    <header>
+        <h3><a href="#feature-module-0-Feature">Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a>
+
+
+        </h3>
+        <p class="label"></p>
+        <p class="label sub">Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</p>
+    </header>
+    <div class="collection">
+        <div class="collection-item">
+            <header>
+                <h3>Scenarios</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p1 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="collection-item">
+            <header>
+                <h3>Steps</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p70 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>70</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Scenario</th>
+            <th>Outcome</th>
+            <th>Steps</th>
+            <th>Wait Time</th>
+        </tr>
+        </thead>
+        <tbody>
+
+    <tr id="scenario-module-0.0-Scenario">
+        <td><a href="#scenario-main-0.0-Scenario">Scenario: Test Case BASE-INV-1040</a></td>
+        <td>Pass</td>
+        <td>70</td>
+        <td>182818ms</td>
+    </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="scenario-main-0.0-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.0-Scenario">Scenario: Test Case BASE-INV-1040<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a></p>
+        <p class="label sub">Scenario: Test Case BASE-INV-1040</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>70</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.0-Given">
+        <div>Given I import scenarios from &quot;D:\CycleProject\Test\Features\WMS\WMSLogin Utilities.feature&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>27ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1-And">
+      <a href="#scenario-main-0.0.0.1.1-Scenario">
+                <div>And I execute scenario &quot;Sign into WMS&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>54699ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.2-Given">
+        <div>Given I import scenarios from &quot;D:\CycleProject\Test\Features\WMS\SearchInventoryWMS.feature&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>18ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3-And">
+      <a href="#scenario-main-0.0.0.3.1-Scenario">
+                <div>And I execute scenario &quot;Search for Inventory Web screen&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>44893ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.4-Given">
+        <div>Given I import scenarios from &quot;D:\CycleProject\Test\Features\WMS\Test Case BASE-INV-1040 Utilities.feature&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>36ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0-Given">
+      <a href="#scenario-main-0.0.1.0.1-Scenario">
+                <div>Given I execute scenario &quot;Search for the Location on the Inventory Screen&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>21389ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.1-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2020ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.2-Then">
+      <a href="#scenario-main-0.0.1.2.1-Scenario">
+                <div>Then I execute scenario &quot;Check that the location is either Empty or Partially Full&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>5804ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.3-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2000ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4-Then">
+      <a href="#scenario-main-0.0.1.4.1-Scenario">
+                <div>Then I execute scenario &quot;Select the &#x27;Actions&#x27; drop-down and click &#x27;Adjust Inventory&#x27;&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>49904ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.5-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2026ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.0.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.0.1-And">Scenario: Sign into WMS<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Test Case BASE-INV-1040</a></p>
+        <p class="label sub">Scenario: Sign into WMS</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>16</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.1.1.0-Given">
+        <div>Given I &quot;Login to WMS&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.1-Given">
+        <div>Given I assign &quot;chrome&quot; to variable &quot;browser&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.2-And">
+        <div>And I assign &quot;http://10.3.10.133:8060/rp/login&quot; to variable &quot;login&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.3-Given">
+        <div>Given I assign &quot;NEHA.THAKRE&quot; to variable &quot;username&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.4-Given">
+        <div>Given I assign &quot;Nthakre@123&quot; to variable &quot;password&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.5-Given">
+        <div>Given I open chrome ($browser) web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1785ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.6-Then">
+        <div>Then I navigate to http://10.3.10.133:8060/rp/login ($login) in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1425ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.7-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5092ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.0.0-If">
+        <div>If I see element &quot;xPath://div[@class&#x3D;&#x27;logo&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>157ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.0.1-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5011ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.1.0-Then">
+        <div>Then I type NEHA.THAKRE ($username) in element &quot;xPath:(//input[@name&#x3D;&#x27;loginName&#x27;])[1]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>402ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.1.1-Then">
+        <div>Then I type Nthakre@123 ($password) in element &quot;xPath:(//input[@name&#x3D;&#x27;password&#x27;])[1]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>269ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.1.2-Then">
+        <div>Then I click element &quot;xPath://input[@id&#x3D;&#x27;loginButton&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>426ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.1.3-And">
+        <div>And I wait 35 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>35021ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.8.1.4-Then">
+        <div>Then I echo &quot;Login Successfully&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1.1.9-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5096ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.0.3.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.0.3-And">Scenario: Search for Inventory Web screen<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Test Case BASE-INV-1040</a></p>
+        <p class="label sub">Scenario: Search for Inventory Web screen</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>10</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.3.1.0-Given">
+        <div>Given I click element &quot;xPath://input[@placeholder&#x3D;&#x27;Search&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>208ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.1-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5003ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.2-Then">
+        <div>Then I assign &quot;Inventory&quot; to variable &quot;Inventory_var&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.3-Then">
+        <div>Then I type Inventory ($Inventory_var) in element &quot;xPath://input[@id&#x3D;&#x27;jdaSearchField-1011-inputEl&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>544ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.4-And">
+        <div>And I press keys ENTER in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>22ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.5-And">
+        <div>And I wait 10 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>10021ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.6-Then">
+        <div>Then I scroll to element &quot;xPath://td[text()&#x3D;&#x27;Inventory -&gt; Inventory&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>565ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.7-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2026ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.8-Then">
+        <div>Then I click element &quot;xPath://td[text()&#x3D;&#x27;Inventory -&gt; Inventory&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1470ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.3.1.9-And">
+        <div>And I wait 25 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>25028ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0-Given">Scenario: Search for the Location on the Inventory Screen<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Test Case BASE-INV-1040</a></p>
+        <p class="label sub">Scenario: Search for the Location on the Inventory Screen</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>7</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.1.0-Given">
+        <div>Given I see element &quot;xPath://input[@id&#x3D;&#x27;rpFilterComboBox-1043-inputEl&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2234ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.1-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5133ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.2-Then">
+        <div>Then I type &quot;CYCPALLOC7&quot; in element &quot;xPath://input[@id&#x3D;&#x27;rpFilterComboBox-1043-inputEl&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2571ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.3-And">
+        <div>And I scroll to element &quot;xPath://span[text()&#x3D;&#x27; in Location&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2660ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.4-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2008ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.5-Then">
+        <div>Then I click element &quot;xPath://span[text()&#x3D;&#x27; in Location&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1624ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.6-And">
+        <div>And I wait 5 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>5025ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.2.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.2-Then">Scenario: Check that the location is either Empty or Partially Full<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Test Case BASE-INV-1040</a></p>
+        <p class="label sub">Scenario: Check that the location is either Empty or Partially Full</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>5</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.2.1.0-Given">
+        <div>Given I &quot; Check that the Location&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.2.1.1-Then">
+        <div>Then I see element &quot;xPath://div[@class&#x3D;&#x27;x-grid-row-checker&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2433ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.2.1.2.0.0-If">
+        <div>If I see element &quot;xPath://div[text()&#x3D;&#x27;Partially Full&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1938ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.2.1.2.1.0-Then">
+        <div>Then I echo &quot;Location is Partially Full&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.2.1.2.1.1-Then">
+        <div>Then I click element &quot;xPath://div[@class&#x3D;&#x27;x-grid-row-checker&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1428ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.4.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.4-Then">Scenario: Select the 'Actions' drop-down and click 'Adjust Inventory'<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Test Case BASE-INV-1040 Adjustment Decrease feature</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Test Case BASE-INV-1040</a></p>
+        <p class="label sub">Scenario: Select the 'Actions' drop-down and click 'Adjust Inventory'</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>21</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.4.1.0-Given">
+        <div>Given I &quot;Adjust Inventory&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.1-Then">
+        <div>Then I click element &quot;xPath://span[@id&#x3D;&#x27;rpCountButton-1631-btnIconEl&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1658ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.2-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2028ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.3-Then">
+        <div>Then I click element &quot;xPath://div[@class&#x3D;&#x27;x-grid-row-checker&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1352ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.4-Then">
+        <div>Then I click element &quot;xPath://span[@id&#x3D;&#x27;wmMultiViewActionButton-1604-btnIconEl&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1553ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.5-And">
+        <div>And I click element &quot;xPath://span[text()&#x3D;&#x27;Adjust Inventory&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1640ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.6-And">
+        <div>And I wait 10 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>10032ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.7-Once">
+        <div>Once I see element &quot;xPath://input[@name&#x3D;&#x27;quantity&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2009ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.8-Then">
+        <div>Then I clear all text in element &quot;xPath://input[@name&#x3D;&#x27;quantity&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2874ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.9-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2077ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.10-Then">
+        <div>Then I type &quot;10&quot; in element &quot;xPath://input[@name&#x3D;&#x27;quantity&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2704ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.11-Then">
+        <div>Then I see element &quot;xPath: //label[text()&#x3D;&#x27;Reason Code&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2082ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.12-And">
+        <div>And I wait 3 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>3011ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.13-Then">
+        <div>Then I click element &quot;xPath:(//div[@class&#x3D;&#x27;x-trigger-index-0 x-form-trigger x-form-arrow-trigger x-form-trigger-first rp-icon-expanded&#x27;])[17]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1453ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.14-And">
+        <div>And I wait 3 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>3005ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.15-And">
+        <div>And I click element &quot;xPath://li[text()&#x3D;&#x27;Acceptable Adjustment&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1356ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.16-Then">
+        <div>Then I type &quot;REF1-100&quot; in element &quot;xPath://input[@name&#x3D;&#x27;adjustmentReference1&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2171ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.17-Then">
+        <div>Then I type &quot;REF2-100&quot; in element &quot;xPath://input[@name&#x3D;&#x27;adjustmentReference2&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2241ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.18-And">
+        <div>And I wait 2 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2011ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.19-Then">
+        <div>Then I click element &quot;xPath://div/a[@class&#x3D;&#x27;x-btn x-unselectable rp-important-btn rp-btn-shadow x-btn-toolbar x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon&#x27;]&quot; in web browser</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1598ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.4.1.20-And">
+        <div>And I wait 3 seconds</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>3043ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+            <section>
+                <small>Tryon Solutions and Cycle are registered trademarks of Tryon Solutions, Inc. Copyright &copy; 2021, Tryon Solutions, Inc. All rights reserved. Functionality may be covered by one or more United States Patents and patents pending.</small>
+            </section>
+        </div>
+    </body>
+</html>

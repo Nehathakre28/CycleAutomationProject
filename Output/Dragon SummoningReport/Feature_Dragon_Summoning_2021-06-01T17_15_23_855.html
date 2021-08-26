@@ -1,0 +1,1071 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    /* CSS RESET */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .85rem; }
+
+h1 {
+  font-size: 34px;
+  font-weight: 100; }
+
+h2, .h2 {
+  font-size: 30px;
+  font-weight: 100; }
+
+h3, .h3 {
+  font-size: 28px;
+  font-weight: 100; }
+
+h4 {
+  font-size: 24px; }
+
+h5 {
+  font-size: 20px; }
+
+h6 {
+  font-size: 18px; }
+
+small {
+  font-size: 80%;
+  color: #949799; }
+
+.label, .list ul li label {
+  font-size: .65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #a0a1a2;
+  letter-spacing: .1rem; }
+  .label.sub, .list ul li label.sub {
+    font-style: italic;
+    font-weight: 400;
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    line-height: .8rem; }
+
+.chart {
+  flex: none;
+  margin-right: 4rem; }
+  .chart.small {
+    margin-right: 2rem; }
+    .chart.small .donut {
+      stroke-width: 70; }
+  .chart svg {
+    transform: rotate(-90deg);
+    background: #27517B;
+    border-radius: 50%; }
+    .chart svg .hole {
+      fill: white; }
+    .chart svg .donut {
+      fill: none;
+      stroke: #3F7ABE;
+      stroke-width: 128; }
+    .chart svg .filling {
+      fill: none;
+      stroke: #A5B9DD;
+      stroke-width: 128; }
+
+.list {
+  flex: 1;
+  align-self: center; }
+  .list.large li {
+    padding: 1rem 0; }
+  .list.large span {
+    font-size: 1.25rem;
+    font-weight: 100; }
+  .list.large label {
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .125rem; }
+  .list ul {
+    width: 100%; }
+    .list ul li {
+      min-height: 1.35rem;
+      border-bottom: 1px solid #d4d4d4;
+      padding: .65rem 0;
+      clear: both;
+      font-size: .9rem; }
+      .list ul li:last-child {
+        border-bottom: none; }
+      .list ul li.header {
+        padding: 0; }
+        .list ul li.header label {
+          padding: 0 0 .5rem 0; }
+      .list ul li span {
+        float: right; }
+    .list ul.multi-col li {
+      display: flex;
+      flex-wrap: wrap; }
+      .list ul.multi-col li label, .list ul.multi-col li div, .list ul.multi-col li a {
+        flex: 1;
+        padding: 0;
+        min-width: 1px; }
+        .list ul.multi-col li label:first-child, .list ul.multi-col li div:first-child, .list ul.multi-col li a:first-child {
+          flex: 6; }
+        .list ul.multi-col li label.end, .list ul.multi-col li div.end, .list ul.multi-col li a.end {
+          text-align: right; }
+      .list ul.multi-col li .step-image {
+        flex-basis: 100%;
+        margin: 1.35rem 0 3rem;
+        flex-wrap: wrap;
+         padding: 8px 16px 16px; }
+        .list ul.multi-col li .step-image .container {
+          display: flex; }
+        .list ul.multi-col li .step-image .target, .list ul.multi-col li .step-image .screenshot {
+          flex: 1; }
+          .list ul.multi-col li .step-image .target label, .list ul.multi-col li .step-image .screenshot label {
+            display: block;
+            margin-bottom: .5rem; }
+          .list ul.multi-col li .step-image .target + div, .list ul.multi-col li .step-image .screenshot + div {
+            margin-left: 1rem; }
+        .list ul.multi-col li .step-image .screenshot {
+          flex: 4; }
+        .list ul.multi-col li .step-image img {
+          max-width: 100%;
+          height: auto; }
+        .list ul.multi-col li .step-image .controls {
+          clear: both;
+        }
+        .list ul.multi-col li .step-image .controls .close {
+          font-size: 24px;
+          float: right;
+          margin-bottom: 4px
+
+        }
+
+table {
+  width: 100%;
+  text-align: left;
+  font-size: .9rem; }
+  table thead {
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #a0a1a2;
+    letter-spacing: .1rem;
+    border-bottom: 1px solid #d4d4d4; }
+    table thead th {
+      padding: 0 0 .5rem 0; }
+      table thead th:last-of-type {
+        text-align: right; }
+    table thead .sub {
+      font-style: italic;
+      font-weight: 400; }
+      table thead .sub th {
+        text-align: left; }
+  table tbody tr {
+    border-bottom: 1px solid #d4d4d4; }
+    table tbody tr:last-child {
+      border-bottom: 0px; }
+    table tbody tr td {
+      padding: .65rem 0; }
+      table tbody tr td:last-child {
+        text-align: right; }
+      table tbody tr td a {
+        display: block; }
+      table tbody tr td .label, table tbody tr td .list ul li label, .list ul li table tbody tr td label {
+        white-space: nowrap; }
+
+.failed-step {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap; }
+  .failed-step .list {
+    min-width: 20%;
+    flex: 2;
+    align-self: flex-start; }
+  .failed-step .image-results {
+    flex: 1;
+    padding-left: 1rem;
+    vertical-align: top; }
+    .failed-step .image-results li[class^="image-"] {
+      border-bottom: 0; }
+    .failed-step .image-results img {
+      max-width: 100%;
+      height: auto; }
+
+#logo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right; }
+  #logo img {
+    max-height: 3.125rem;
+    margin: 1rem 0; }
+  #logo #metadata p + p {
+    margin-top: .35rem; }
+
+body, table {
+  font-family: "Open Sans";
+  color: #555759; }
+
+section {
+  margin-bottom: 5rem; }
+
+a {
+  text-decoration: none;
+  color: #27517B;
+  transition: .25s ease-in-out; }
+  a:hover {
+    color: #A5B9DD; }
+
+#container {
+  max-width: 60rem;
+  margin: auto; }
+
+header {
+  width: 100%;
+  padding-top: .75rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #d4d4d4; }
+  header span {
+    float: right; }
+    header span.face-up {
+      transform: rotate(-90deg);
+      margin-right: .5rem; }
+  header .open {
+    float: right; }
+    header .open:hover {
+      opacity: .65; }
+  header .label, header .list ul li label, .list ul li header label {
+    margin-bottom: .5rem; }
+
+.collection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .collection .collection-item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 4rem; }
+    .collection .collection-item:nth-child(odd) {
+      padding-right: 1rem; }
+    .collection .collection-item:nth-child(even) {
+      padding-left: 1rem; }
+    .collection .collection-item header {
+      margin-bottom: 1rem; }
+    .collection .collection-item .donut {
+      margin-right: 2rem; }
+
+.hero {
+  display: flex;
+  flex-wrap: wrap; }
+  .hero .title-group {
+    width: 100%; }
+    .hero .title-group:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .hero h1 {
+    width: 100%;
+    max-width: 85%;
+    padding-bottom: .35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left; }
+  .hero h5 {
+    word-break: break-all; }
+
+.allow-breaks {
+  word-break: break-all; }
+
+.red {
+  color: #ff314e; }
+
+#test {
+  position: relative; }
+
+.error-counter {
+  display: flex;
+  align-items: center;
+  max-width: 10rem; }
+  .error-counter p {
+    font-size: 1.12rem;
+    color: #ff314e; }
+  .error-counter svg {
+    margin-left: .5rem; }
+
+div[id^="step-image-id-"] {
+  display: none;
+}
+
+div[id^="step-image-id-"]:target {
+  position: fixed;
+  width: 50rem;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex !important;
+  padding: 1rem;
+  margin-top: 0;
+  justify-content: center;
+  z-index: 4;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+
+#error-summary {
+  display: none; }
+  #error-summary:target {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+    justify-content: center;
+    z-index: 4;
+    background-color: white;
+    overflow: scroll; }
+  #error-summary .error-list {
+    width: 80%;
+    margin-bottom: 4rem; }
+  #error-summary .control {
+    width: 100%;
+    height: 2rem;
+    clear: both;
+    margin-bottom: 1rem; }
+  #error-summary .close {
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 100; }
+  #error-summary .list .multi-col .header label:first-child {
+    flex: 1; }
+  #error-summary .list .multi-col li div:first-child {
+    flex: 1; }
+    #error-summary .list .multi-col li div:first-child .label, #error-summary .list .multi-col ul li div:first-child label, #error-summary .list ul .multi-col li div:first-child label {
+      margin-top: .35rem; }
+  #error-summary .list .multi-col li div:last-child {
+    text-align: right; }
+
+/* MEDIA QUERIES */
+@media print {
+  .step-image {
+    display: flex !important; }
+
+  .hide-for-print {
+    display: none !important; } }
+@media screen and (max-width: 1056px) {
+  #container {
+    margin: auto 3rem; } }
+@media screen and (max-width: 860px) {
+  .collection .collection-item {
+    width: 100%;
+    padding: 0 !important; }
+
+  .chart:not(.small) {
+    margin: auto; }
+
+  .list.large {
+    flex: none;
+    width: 100%; }
+
+  .error {
+    flex-direction: column; }
+    .error > .list {
+      margin-bottom: 1rem; }
+    .error .image-results {
+      padding-left: 0; } }
+
+    </style>
+
+<title>Feature: Dragon Summoning</title>
+</head>
+
+<body>
+<div id="container">
+  <div id="logo">
+  <img src="data:image/png;base64,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" />
+
+    <aside id="metadata">
+        <p class="label">1 Jun, 2021 5:15 PM</p>
+        <p class="label">cycle-gui</p></small></h5>
+    </aside>
+  </div>
+<section id="feature-main-0-Feature">
+    <header>
+        <h3><a href="#feature-module-0-Feature">Feature: Dragon Summoning</a>
+
+
+        </h3>
+        <p class="label"></p>
+        <p class="label sub">Feature: Dragon Summoning</p>
+    </header>
+    <div class="collection">
+        <div class="collection-item">
+            <header>
+                <h3>Scenarios</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p1 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="collection-item">
+            <header>
+                <h3>Steps</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p38 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>38</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Scenario</th>
+            <th>Outcome</th>
+            <th>Steps</th>
+            <th>Wait Time</th>
+        </tr>
+        </thead>
+        <tbody>
+
+    <tr id="scenario-module-0.0-Scenario">
+        <td><a href="#scenario-main-0.0-Scenario">Scenario: Summon Five Dragons</a></td>
+        <td>Pass</td>
+        <td>38</td>
+        <td>101ms</td>
+    </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="scenario-main-0.0-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.0-Scenario">Scenario: Summon Five Dragons<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a></p>
+        <p class="label sub">Scenario: Summon Five Dragons</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>38</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.0-Given">
+        <div>Given I import scenarios from &quot;D:\CycleProject\Test\Features\Dragon Summoning\Data Management Utilities.feature&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>13ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.1-And">
+        <div>And I import scenarios from &quot;D:\CycleProject\Test\Features\Dragon Summoning\Dragon Summoning Utilities.feature&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>48ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.0.2-When">
+      <a href="#scenario-main-0.0.0.2.1-Scenario">
+                <div>When I execute scenario &quot;Data Setup&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>3ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.0.0-If">
+        <div>If I verify text TRUE ($continue) is equal to &quot;FALSE&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Fail</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.0-Elsif">
+        <div>Elsif I verify text TRUE ($continue) is equal to &quot;TRUE&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.0-Given">
+        <div>Given I assign 5 to variable &quot;quantity_of_dragons&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1-When">
+      <a href="#scenario-main-0.0.1.0.2.1.1-Scenario">
+                <div>When I execute scenario &quot;Summon Dragons&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>29ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.2.0.0.0-If">
+        <div>If I verify number 5 ($dragons_summoned) is equal to 5</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.2.0.1.0-Then">
+        <div>Then I echo &quot;The dragons are summoned!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.0.2.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.0.2-When">Scenario: Data Setup<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a></p>
+        <p class="label sub">Scenario: Data Setup</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.2.1.0-Given">
+        <div>Given I assign &quot;TRUE&quot; to variable &quot;continue&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1-When">Scenario: Summon Dragons<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a></p>
+        <p class="label sub">Scenario: Summon Dragons</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>28</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.0-Given">
+        <div>Given I verify variable &quot;quantity_of_dragons&quot; is assigned</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.1-And">
+        <div>And I assign 0 to variable &quot;dragons_summoned&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.0.0-While">
+        <div>While I verify number 0 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.1.0-Given">
+        <div>Given I &quot;summon Dragon&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.1.1-And">
+      <a href="#scenario-main-0.0.1.0.2.1.1.2.1.1.1-Scenario">
+                <div>And I execute scenario &quot;Hello World&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.1.2-Then">
+        <div>Then I increase variable &quot;dragons_summoned&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.2.0-While">
+        <div>While I verify number 1 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.3.0-Given">
+        <div>Given I &quot;summon Dragon&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.3.1-And">
+      <a href="#scenario-main-0.0.1.0.2.1.1.2.3.1.1-Scenario">
+                <div>And I execute scenario &quot;Hello World&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.3.2-Then">
+        <div>Then I increase variable &quot;dragons_summoned&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.4.0-While">
+        <div>While I verify number 2 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.5.0-Given">
+        <div>Given I &quot;summon Dragon&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.5.1-And">
+      <a href="#scenario-main-0.0.1.0.2.1.1.2.5.1.1-Scenario">
+                <div>And I execute scenario &quot;Hello World&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.5.2-Then">
+        <div>Then I increase variable &quot;dragons_summoned&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.6.0-While">
+        <div>While I verify number 3 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.7.0-Given">
+        <div>Given I &quot;summon Dragon&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.7.1-And">
+      <a href="#scenario-main-0.0.1.0.2.1.1.2.7.1.1-Scenario">
+                <div>And I execute scenario &quot;Hello World&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.7.2-Then">
+        <div>Then I increase variable &quot;dragons_summoned&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.8.0-While">
+        <div>While I verify number 4 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.9.0-Given">
+        <div>Given I &quot;summon Dragon&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.9.1-And">
+      <a href="#scenario-main-0.0.1.0.2.1.1.2.9.1.1-Scenario">
+                <div>And I execute scenario &quot;Hello World&quot;</div>
+      </a>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.9.2-Then">
+        <div>Then I increase variable &quot;dragons_summoned&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.2.1.1.2.10.0-While">
+        <div>While I verify number 5 ($dragons_summoned) is less than 5 ($quantity_of_dragons)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Fail</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1.2.1.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1.1.2.1.1-And">Scenario: Hello World<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a> &gt; 0.0.1.0.2.1.1-Scenario</p>
+        <p class="label sub">Scenario: Hello World</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.2.1.1.1.0-Given">
+        <div>Given I echo &quot;Hello World!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1.2.3.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1.1.2.3.1-And">Scenario: Hello World<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a> &gt; 0.0.1.0.2.1.1-Scenario</p>
+        <p class="label sub">Scenario: Hello World</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.2.3.1.1.0-Given">
+        <div>Given I echo &quot;Hello World!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1.2.5.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1.1.2.5.1-And">Scenario: Hello World<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a> &gt; 0.0.1.0.2.1.1-Scenario</p>
+        <p class="label sub">Scenario: Hello World</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.2.5.1.1.0-Given">
+        <div>Given I echo &quot;Hello World!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1.2.7.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1.1.2.7.1-And">Scenario: Hello World<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a> &gt; 0.0.1.0.2.1.1-Scenario</p>
+        <p class="label sub">Scenario: Hello World</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.2.7.1.1.0-Given">
+        <div>Given I echo &quot;Hello World!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.0.1.0.2.1.1.2.9.1.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#step-module-0.0.1.0.2.1.1.2.9.1-And">Scenario: Hello World<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: Dragon Summoning</a> &gt; <a href='#scenario-main-0.0-Scenario'>Scenario: Summon Five Dragons</a> &gt; 0.0.1.0.2.1.1-Scenario</p>
+        <p class="label sub">Scenario: Hello World</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>1</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.1.0.2.1.1.2.9.1.1.0-Given">
+        <div>Given I echo &quot;Hello World!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+            <section>
+                <small>Tryon Solutions and Cycle are registered trademarks of Tryon Solutions, Inc. Copyright &copy; 2021, Tryon Solutions, Inc. All rights reserved. Functionality may be covered by one or more United States Patents and patents pending.</small>
+            </section>
+        </div>
+    </body>
+</html>

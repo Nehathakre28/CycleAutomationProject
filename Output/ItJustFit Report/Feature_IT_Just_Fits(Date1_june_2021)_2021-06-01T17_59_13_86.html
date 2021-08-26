@@ -1,0 +1,2231 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+
+    /* CSS RESET */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .85rem; }
+
+h1 {
+  font-size: 34px;
+  font-weight: 100; }
+
+h2, .h2 {
+  font-size: 30px;
+  font-weight: 100; }
+
+h3, .h3 {
+  font-size: 28px;
+  font-weight: 100; }
+
+h4 {
+  font-size: 24px; }
+
+h5 {
+  font-size: 20px; }
+
+h6 {
+  font-size: 18px; }
+
+small {
+  font-size: 80%;
+  color: #949799; }
+
+.label, .list ul li label {
+  font-size: .65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #a0a1a2;
+  letter-spacing: .1rem; }
+  .label.sub, .list ul li label.sub {
+    font-style: italic;
+    font-weight: 400;
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    line-height: .8rem; }
+
+.chart {
+  flex: none;
+  margin-right: 4rem; }
+  .chart.small {
+    margin-right: 2rem; }
+    .chart.small .donut {
+      stroke-width: 70; }
+  .chart svg {
+    transform: rotate(-90deg);
+    background: #27517B;
+    border-radius: 50%; }
+    .chart svg .hole {
+      fill: white; }
+    .chart svg .donut {
+      fill: none;
+      stroke: #3F7ABE;
+      stroke-width: 128; }
+    .chart svg .filling {
+      fill: none;
+      stroke: #A5B9DD;
+      stroke-width: 128; }
+
+.list {
+  flex: 1;
+  align-self: center; }
+  .list.large li {
+    padding: 1rem 0; }
+  .list.large span {
+    font-size: 1.25rem;
+    font-weight: 100; }
+  .list.large label {
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .125rem; }
+  .list ul {
+    width: 100%; }
+    .list ul li {
+      min-height: 1.35rem;
+      border-bottom: 1px solid #d4d4d4;
+      padding: .65rem 0;
+      clear: both;
+      font-size: .9rem; }
+      .list ul li:last-child {
+        border-bottom: none; }
+      .list ul li.header {
+        padding: 0; }
+        .list ul li.header label {
+          padding: 0 0 .5rem 0; }
+      .list ul li span {
+        float: right; }
+    .list ul.multi-col li {
+      display: flex;
+      flex-wrap: wrap; }
+      .list ul.multi-col li label, .list ul.multi-col li div, .list ul.multi-col li a {
+        flex: 1;
+        padding: 0;
+        min-width: 1px; }
+        .list ul.multi-col li label:first-child, .list ul.multi-col li div:first-child, .list ul.multi-col li a:first-child {
+          flex: 6; }
+        .list ul.multi-col li label.end, .list ul.multi-col li div.end, .list ul.multi-col li a.end {
+          text-align: right; }
+      .list ul.multi-col li .step-image {
+        flex-basis: 100%;
+        margin: 1.35rem 0 3rem;
+        flex-wrap: wrap;
+         padding: 8px 16px 16px; }
+        .list ul.multi-col li .step-image .container {
+          display: flex; }
+        .list ul.multi-col li .step-image .target, .list ul.multi-col li .step-image .screenshot {
+          flex: 1; }
+          .list ul.multi-col li .step-image .target label, .list ul.multi-col li .step-image .screenshot label {
+            display: block;
+            margin-bottom: .5rem; }
+          .list ul.multi-col li .step-image .target + div, .list ul.multi-col li .step-image .screenshot + div {
+            margin-left: 1rem; }
+        .list ul.multi-col li .step-image .screenshot {
+          flex: 4; }
+        .list ul.multi-col li .step-image img {
+          max-width: 100%;
+          height: auto; }
+        .list ul.multi-col li .step-image .controls {
+          clear: both;
+        }
+        .list ul.multi-col li .step-image .controls .close {
+          font-size: 24px;
+          float: right;
+          margin-bottom: 4px
+
+        }
+
+table {
+  width: 100%;
+  text-align: left;
+  font-size: .9rem; }
+  table thead {
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #a0a1a2;
+    letter-spacing: .1rem;
+    border-bottom: 1px solid #d4d4d4; }
+    table thead th {
+      padding: 0 0 .5rem 0; }
+      table thead th:last-of-type {
+        text-align: right; }
+    table thead .sub {
+      font-style: italic;
+      font-weight: 400; }
+      table thead .sub th {
+        text-align: left; }
+  table tbody tr {
+    border-bottom: 1px solid #d4d4d4; }
+    table tbody tr:last-child {
+      border-bottom: 0px; }
+    table tbody tr td {
+      padding: .65rem 0; }
+      table tbody tr td:last-child {
+        text-align: right; }
+      table tbody tr td a {
+        display: block; }
+      table tbody tr td .label, table tbody tr td .list ul li label, .list ul li table tbody tr td label {
+        white-space: nowrap; }
+
+.failed-step {
+  display: flex;
+  margin-top: 1rem;
+  flex-wrap: wrap; }
+  .failed-step .list {
+    min-width: 20%;
+    flex: 2;
+    align-self: flex-start; }
+  .failed-step .image-results {
+    flex: 1;
+    padding-left: 1rem;
+    vertical-align: top; }
+    .failed-step .image-results li[class^="image-"] {
+      border-bottom: 0; }
+    .failed-step .image-results img {
+      max-width: 100%;
+      height: auto; }
+
+#logo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right; }
+  #logo img {
+    max-height: 3.125rem;
+    margin: 1rem 0; }
+  #logo #metadata p + p {
+    margin-top: .35rem; }
+
+body, table {
+  font-family: "Open Sans";
+  color: #555759; }
+
+section {
+  margin-bottom: 5rem; }
+
+a {
+  text-decoration: none;
+  color: #27517B;
+  transition: .25s ease-in-out; }
+  a:hover {
+    color: #A5B9DD; }
+
+#container {
+  max-width: 60rem;
+  margin: auto; }
+
+header {
+  width: 100%;
+  padding-top: .75rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #d4d4d4; }
+  header span {
+    float: right; }
+    header span.face-up {
+      transform: rotate(-90deg);
+      margin-right: .5rem; }
+  header .open {
+    float: right; }
+    header .open:hover {
+      opacity: .65; }
+  header .label, header .list ul li label, .list ul li header label {
+    margin-bottom: .5rem; }
+
+.collection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .collection .collection-item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin-bottom: 4rem; }
+    .collection .collection-item:nth-child(odd) {
+      padding-right: 1rem; }
+    .collection .collection-item:nth-child(even) {
+      padding-left: 1rem; }
+    .collection .collection-item header {
+      margin-bottom: 1rem; }
+    .collection .collection-item .donut {
+      margin-right: 2rem; }
+
+.hero {
+  display: flex;
+  flex-wrap: wrap; }
+  .hero .title-group {
+    width: 100%; }
+    .hero .title-group:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .hero h1 {
+    width: 100%;
+    max-width: 85%;
+    padding-bottom: .35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    float: left; }
+  .hero h5 {
+    word-break: break-all; }
+
+.allow-breaks {
+  word-break: break-all; }
+
+.red {
+  color: #ff314e; }
+
+#test {
+  position: relative; }
+
+.error-counter {
+  display: flex;
+  align-items: center;
+  max-width: 10rem; }
+  .error-counter p {
+    font-size: 1.12rem;
+    color: #ff314e; }
+  .error-counter svg {
+    margin-left: .5rem; }
+
+div[id^="step-image-id-"] {
+  display: none;
+}
+
+div[id^="step-image-id-"]:target {
+  position: fixed;
+  width: 50rem;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex !important;
+  padding: 1rem;
+  margin-top: 0;
+  justify-content: center;
+  z-index: 4;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+
+#error-summary {
+  display: none; }
+  #error-summary:target {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3rem;
+    justify-content: center;
+    z-index: 4;
+    background-color: white;
+    overflow: scroll; }
+  #error-summary .error-list {
+    width: 80%;
+    margin-bottom: 4rem; }
+  #error-summary .control {
+    width: 100%;
+    height: 2rem;
+    clear: both;
+    margin-bottom: 1rem; }
+  #error-summary .close {
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 100; }
+  #error-summary .list .multi-col .header label:first-child {
+    flex: 1; }
+  #error-summary .list .multi-col li div:first-child {
+    flex: 1; }
+    #error-summary .list .multi-col li div:first-child .label, #error-summary .list .multi-col ul li div:first-child label, #error-summary .list ul .multi-col li div:first-child label {
+      margin-top: .35rem; }
+  #error-summary .list .multi-col li div:last-child {
+    text-align: right; }
+
+/* MEDIA QUERIES */
+@media print {
+  .step-image {
+    display: flex !important; }
+
+  .hide-for-print {
+    display: none !important; } }
+@media screen and (max-width: 1056px) {
+  #container {
+    margin: auto 3rem; } }
+@media screen and (max-width: 860px) {
+  .collection .collection-item {
+    width: 100%;
+    padding: 0 !important; }
+
+  .chart:not(.small) {
+    margin: auto; }
+
+  .list.large {
+    flex: none;
+    width: 100%; }
+
+  .error {
+    flex-direction: column; }
+    .error > .list {
+      margin-bottom: 1rem; }
+    .error .image-results {
+      padding-left: 0; } }
+
+    </style>
+
+<title>Feature: IT Just Fits(Date:1 june 2021)</title>
+</head>
+
+<body>
+<div id="container">
+  <div id="logo">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAApCAYAAADplH1JAAAACXBIWXMAAAsSAAALEgHS3X78AAAHM0lEQVR4nO1cO28bRxAeCw7iAEEkV3ZhWHfCFWwSMV0QICClQnAqM2ARBEJgsTCcVKYDpLFAiAIhA0EK0aUrUYXSEaFaFcrxF5jqWBC64z8Qu3QOhvmWGZ3vsXs8ylbMDyBEHY87uzvvmT3eePPmDaVFrlxbIqIiEeXxl/B+kYiGROQT0QUR9YjI7bcbbmpic8QiFSNz5doWEfGrYPjVERF1iKg1Z2q2uGkyGhhYJ6LllLNgTX0ELZ0zMkNoMTJXrrG5bBHRakakm1exuA8JC0lrhRa+zpCJh/12w//QNz5rxPrIXLnWginMEmt3c2vj4dy99bl5zQiRjJwRE7v9dqNY3D714We7HDS5e+tzDZ0SoYzMlWtVItqfAb3K3dwaBzp/imscyVbdvfXWjNb43sGxbA4YdzCv3YHv1aed41s+MleuFWfExGG/3WBmVQPXOZI9KG6fbs2A5geDS4xEgj8rzWgWt0/zMbnnnJlTIKiR1SlyRIUuXkNxbQQBCWpjEMzMYsI9c4RgkkdCG5M2OgyKSVyt6cnPMWaJ39/NrS1pBk+d4vap5e6tX8wZpg9ZEKjCX5ngmKPOfrsRuum4PjbV0LSRBo1FVI+MhMqxbAv1XktcZsHqDXxvplExaOfxUmCabha0HcsuBcbmcS+lbpOoNVeu+YZmlRN7I58GH+lqCoytk5ZgE7lS9DDmNjb11YHv9RzL5nuf4vrLge/FCoxj2Swcf+Hf44HvldLSFt/Tilody65CqMP2i5WiPvC9cZVs7CNRgpspE+nfAkAPWjPSuD2fdINj2VvQuriNJARYqiwoy4NbjmUvJXxXMnryXWiJKW1tOJbdQvYQJfR8fR+COQl2SgY0hil96RhgZlTeNPz045u//fj1/eePC1bsnBzLZkYfiIXyvCpEdHvgezf4RURfssRLwYGpO8a/i+jiRNGwBKOGypyBdkuD9rNA0KcFMOeRGPs7NS7Grog1PWWroRhpEinWo3yiLty99WZggd17tz/59XHBcn/46t5Ptz5aeMELOTo5t2KGlGnSGWvwwPdaA9+bzI3NGcyWhfaZgtSQOKGUn0nhawomxtFuwrJop3Qw5cr0DzG2nDuP3QrwrKoYmWjGgBGS+qnx/Tf3/2AT/eDzO788Llj07Rd3focUSlMSqpUwa6qIz5JZlJsYBH+mfAk2wgUDGMsYL0hjSWir6qOqjS6I6yUN2iZ7JoWnGjU2fK5aw0MVtepGqx2Ne7Tw8wPn+WcLC35CShIlYFIaL2mCAZowzYTNC66tJPalKWhI2p0ZRMSXNA0BTxQmFutmrly7ZUAk60knBVhRplUyOJVwsZbAFzGzCuwPA0yRplRq1CVGpqEdBfhkqVTaJzBYI00YedVIiiinRVOkAXVlSmE+lZAdxmhd1kULKbhDA996wYz8O+PJZImsmtlRkIwssV+ECZXm7Cq7MlIwfJOuyEK/3TBhZGYacnRyrjPWWcR1ueC4yDYWYNoh7llEXilTjm6wghJwL7pBou58ZInTaOzEox4BmOSbSdBJeaJMl9zcaTsmUuqrGtqYJe0wKOFdDIumo6AY2dW8fxn9yiygM8ko3yQ3mAOVxA2NquDA/6n1L8scLiJt6IhkfDUhqoylHQGZ4zZ1visLAr2EeyWm7mYj0dfphITOCyZxV1w6iNpQ3gjUNuMizLASWqhvBG15/z7GT0s7OH5LFEtYsFxUksLGzzuWzRairvJIV0hiEgp8sm7KwoDuwiLv40AgkJzvg5mu0GT5eaTV4cqJY9lDEamO4uqjoC2FcQdWwZh2BEqiucAB32vHss9w7QKxSlEEg92xRvbbjY5mIVvhAIV2I3CAc3Ry3tGMRs82N1Zi89aB7/FiXopLy9jcHbxkHpZ0Yk8KZiepyDDwva0MaQfHVs0FWcZchbLt4K+sbDVlsGOa3L7GIS0tHJ2c5zW7BQpaHQO0oWxsalDyu7hua4Ty0s9quY8paLtwDbtRTEat1kKB/DigaGeItisD3+OUqSP7kfwlT2cBIRNuQqvfAsa9qD2p9AxaZcPNjZXUaYUp4nqO1wWTEwJ8+jtXrh2mOMtagN8cQbpUgCLt+DNovK4fTt0mS4lgZ+PaIfjsRz1QLDbBIsxmmOlUT2/pMPJwc2Ml0xpmHBC0KH82DCkAXAtcKgjgmYyp04sQrDZejRsNSU3Ws3esjbNY+5XgrcpOv91oirJVlthKqFsyE4ubGytXdnoOybZyJSPDvuF7hagSXTWmzpkWpRhGdq+aiUDoeZzriFBG4ihHMWNmLjdeHeQDY3KAtLu5sfIumEhI3lUacK2fPUl6rG4JkprVU1mHtScVF515Nt/1pKR/Dj1o/YYAEv+o85UmGNWeVMb54TvSwP8ttH8MAol9PQPtrGR1gGuO/6Ddj+TUBIeSbZhFk9qsxPwhnRlg2t/ZKYnf2Yk6KDRSv7PD1Z3ggz5zZAAi+gf/YeT7aH92JwAAAABJRU5ErkJggg==" />
+
+    <aside id="metadata">
+        <p class="label">1 Jun, 2021 5:59 PM</p>
+        <p class="label">cycle-gui</p></small></h5>
+    </aside>
+  </div>
+<section id="feature-main-0-Feature">
+    <header>
+        <h3><a href="#feature-module-0-Feature">Feature: IT Just Fits(Date:1 june 2021)</a>
+
+
+        </h3>
+        <p class="label"></p>
+        <p class="label sub">Feature: IT Just Fits(Date:1 june 2021)</p>
+    </header>
+    <div class="collection">
+        <div class="collection-item">
+            <header>
+                <h3>Scenarios</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p4 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>4</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="collection-item">
+            <header>
+                <h3>Steps</h3>
+            </header>
+
+        <div class="chart small">
+          <svg width="128" height="128">
+            <circle class="donut" varnish="p256 f0" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="filling" r="64" cx="64" cy="64" stroke-dasharray="402.0 402"></circle>
+            <circle class="hole" r="30" cx="64" cy="64"></circle>
+          </svg>
+        </div>
+
+
+           <div class="list small">
+                <ul>
+                    <li><label>Pass</label><span>256</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Scenario</th>
+            <th>Outcome</th>
+            <th>Steps</th>
+            <th>Wait Time</th>
+        </tr>
+        </thead>
+        <tbody>
+
+    <tr id="scenario-module-0.0-Scenario">
+        <td><a href="#scenario-main-0.0-Scenario">Scenario: Setting up Feature File</a></td>
+        <td>Pass</td>
+        <td>3</td>
+        <td>9ms</td>
+    </tr>
+    <tr id="scenario-module-0.1-Scenario">
+        <td><a href="#scenario-main-0.1-Scenario">Scenario: If I Have More Options</a></td>
+        <td>Pass</td>
+        <td>7</td>
+        <td>3880ms</td>
+    </tr>
+    <tr id="scenario-module-0.2-Scenario">
+        <td><a href="#scenario-main-0.2-Scenario">Scenario: While Away the Time</a></td>
+        <td>Pass</td>
+        <td>70</td>
+        <td>3130ms</td>
+    </tr>
+    <tr id="scenario-module-0.3-Scenario">
+        <td><a href="#scenario-main-0.3-Scenario">Scenario: A Gizmo Saved is a Gizmo Earned</a></td>
+        <td>Pass</td>
+        <td>176</td>
+        <td>6117ms</td>
+    </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="scenario-main-0.0-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.0-Scenario">Scenario: Setting up Feature File<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: IT Just Fits(Date:1 june 2021)</a></p>
+        <p class="label sub">Scenario: Setting up Feature File</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>3</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.0.0.0-Given">
+        <div>Given I assign 55 to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>4ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.0.1.0.0.0-If">
+        <div>If I verify number 55 ($gizmos) is less than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Fail</div>
+
+    </li>    <li id="step-module-0.0.1.0.1.0-Else">
+        <div>Else I echo &quot;Too many gizmos!&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.1-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.1-Scenario">Scenario: If I Have More Options<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: IT Just Fits(Date:1 june 2021)</a></p>
+        <p class="label sub">Scenario: If I Have More Options</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>7</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.1.0.0-Given">
+        <div>Given I assign 55 to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.0-When">
+        <div>When I prompt &quot;Plz Enter Value Greater than 50&quot; for integer and assign user response to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>3840ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.1.0.0-If">
+        <div>If I verify number 55 ($gizmos) is less than or equal to 70</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.1.0.1-And">
+        <div>And I verify number 55 ($gizmos) is greater than 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.1.1.0-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.1.1.1-Then">
+        <div>Then I assign variable &quot;Var1&quot; by combining 55 ($gizmos)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.1.1.1.1.2-And">
+        <div>And i echo 55 ($Var1)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.2-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.2-Scenario">Scenario: While Away the Time<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: IT Just Fits(Date:1 june 2021)</a></p>
+        <p class="label sub">Scenario: While Away the Time</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>70</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.2.0.0-Given">
+        <div>Given I assign 55 to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.0-When">
+        <div>When I prompt &quot;Plz Enter Value Greater than 50&quot; for integer and assign user response to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2978ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.1-Then">
+        <div>Then I assign variable &quot;Var1&quot; by combining 65 ($gizmos)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.2-And">
+        <div>And i echo 65 ($Var1)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.3-And">
+        <div>And I convert string variable &quot;Var1&quot; to INTEGER variable &quot;SetVar&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.0.0-while">
+        <div>while I verify number 65 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.1.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.1.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.1.2-And">
+        <div>And I echo 64 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.2.0-while">
+        <div>while I verify number 64 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.3.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.3.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.3.2-And">
+        <div>And I echo 63 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.4.0-while">
+        <div>while I verify number 63 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.5.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.5.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.5.2-And">
+        <div>And I echo 62 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.6.0-while">
+        <div>while I verify number 62 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.7.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.7.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.7.2-And">
+        <div>And I echo 61 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.8.0-while">
+        <div>while I verify number 61 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.9.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.9.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.9.2-And">
+        <div>And I echo 60 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.10.0-while">
+        <div>while I verify number 60 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.11.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.11.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.11.2-And">
+        <div>And I echo 59 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.12.0-while">
+        <div>while I verify number 59 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.13.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.13.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.13.2-And">
+        <div>And I echo 58 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.14.0-while">
+        <div>while I verify number 58 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.15.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.15.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.15.2-And">
+        <div>And I echo 57 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.16.0-while">
+        <div>while I verify number 57 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.17.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.17.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.17.2-And">
+        <div>And I echo 56 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.18.0-while">
+        <div>while I verify number 56 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.19.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.19.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.19.2-And">
+        <div>And I echo 55 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.20.0-while">
+        <div>while I verify number 55 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.21.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.21.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.21.2-And">
+        <div>And I echo 54 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.22.0-while">
+        <div>while I verify number 54 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.23.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.23.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.23.2-And">
+        <div>And I echo 53 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.24.0-while">
+        <div>while I verify number 53 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>100ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.25.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.25.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.25.2-And">
+        <div>And I echo 52 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.26.0-while">
+        <div>while I verify number 52 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.27.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.27.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.27.2-And">
+        <div>And I echo 51 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.28.0-while">
+        <div>while I verify number 51 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.29.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.29.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.29.2-And">
+        <div>And I echo 50 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.30.0-while">
+        <div>while I verify number 50 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.31.0-Then">
+        <div>Then I decrease variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.31.1-Then">
+        <div>Then I echo &quot;This will fit in the big bag&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.31.2-And">
+        <div>And I echo 49 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.2.1.4.32.0-while">
+        <div>while I verify number 49 ($SetVar) is greater than or equal to 50</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Fail</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+<section id="scenario-main-0.3-Scenario" class="hero">
+    <header>
+        <h3><a href="#scenario-module-0.3-Scenario">Scenario: A Gizmo Saved is a Gizmo Earned<span class="face-up">&#8250;</span></a></h3>
+        <p class="label"><a href='#feature-main-0-Feature'>Feature: IT Just Fits(Date:1 june 2021)</a></p>
+        <p class="label sub">Scenario: A Gizmo Saved is a Gizmo Earned</p>
+    </header>
+
+    <div class="chart">
+        <svg width="256" height="256">
+            <circle class="donut" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="filling" r="128" cx="128" cy="128" stroke-dasharray="804.0 804"></circle>
+            <circle class="hole" r="64" cx="128" cy="128"></circle>
+        </svg>
+    </div>
+
+
+           <div class="list large">
+                <ul>
+                    <li><label>Pass</label><span>176</span></li>
+                    <li><label>Fail</label><span>0</span></li>
+                </ul>
+            </div>
+
+</section>
+
+<section id="step">
+  <div class="list">
+    <ul class="multi-col">
+      <li class="header">
+        <label>Step</label>
+        <label class="hide-for-print">Images</label>
+        <label>Duration</label>
+        <label class="end">Outcome</label>
+      </li>
+    <li id="step-module-0.3.0.0-Given">
+        <div>Given I assign 55 to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.0-When">
+        <div>When I prompt &quot;Plz Enter Value Greater than 50&quot; for integer and assign user response to variable &quot;gizmos&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>6014ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.1-Then">
+        <div>Then I assign variable &quot;Var1&quot; by combining 20 ($gizmos)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.2-And">
+        <div>And i echo 20 ($Var1)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.3-And">
+        <div>And I convert string variable &quot;Var1&quot; to INTEGER variable &quot;SetVar&quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.0.0-If">
+        <div>If I verify number 20 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.0-Then">
+        <div>Then I echo &quot;Less than 75 &quot;</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.0.0-While">
+        <div>While I verify number 20 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.1.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.1.1-And">
+        <div>And i echo 21 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.2.0-While">
+        <div>While I verify number 21 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.3.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.3.1-And">
+        <div>And i echo 22 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.4.0-While">
+        <div>While I verify number 22 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.5.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.5.1-And">
+        <div>And i echo 23 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.6.0-While">
+        <div>While I verify number 23 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.7.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.7.1-And">
+        <div>And i echo 24 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.8.0-While">
+        <div>While I verify number 24 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.9.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.9.1-And">
+        <div>And i echo 25 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.10.0-While">
+        <div>While I verify number 25 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.11.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.11.1-And">
+        <div>And i echo 26 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.12.0-While">
+        <div>While I verify number 26 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.13.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.13.1-And">
+        <div>And i echo 27 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.14.0-While">
+        <div>While I verify number 27 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.15.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.15.1-And">
+        <div>And i echo 28 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.16.0-While">
+        <div>While I verify number 28 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.17.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.17.1-And">
+        <div>And i echo 29 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.18.0-While">
+        <div>While I verify number 29 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.19.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.19.1-And">
+        <div>And i echo 30 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.20.0-While">
+        <div>While I verify number 30 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.21.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.21.1-And">
+        <div>And i echo 31 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.22.0-While">
+        <div>While I verify number 31 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.23.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.23.1-And">
+        <div>And i echo 32 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.24.0-While">
+        <div>While I verify number 32 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.25.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.25.1-And">
+        <div>And i echo 33 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.26.0-While">
+        <div>While I verify number 33 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.27.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.27.1-And">
+        <div>And i echo 34 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.28.0-While">
+        <div>While I verify number 34 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.29.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.29.1-And">
+        <div>And i echo 35 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.30.0-While">
+        <div>While I verify number 35 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.31.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.31.1-And">
+        <div>And i echo 36 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.32.0-While">
+        <div>While I verify number 36 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.33.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.33.1-And">
+        <div>And i echo 37 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.34.0-While">
+        <div>While I verify number 37 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.35.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.35.1-And">
+        <div>And i echo 38 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.36.0-While">
+        <div>While I verify number 38 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.37.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.37.1-And">
+        <div>And i echo 39 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.38.0-While">
+        <div>While I verify number 39 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.39.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.39.1-And">
+        <div>And i echo 40 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>2ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.40.0-While">
+        <div>While I verify number 40 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.41.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.41.1-And">
+        <div>And i echo 41 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.42.0-While">
+        <div>While I verify number 41 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.43.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.43.1-And">
+        <div>And i echo 42 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.44.0-While">
+        <div>While I verify number 42 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.45.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.45.1-And">
+        <div>And i echo 43 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.46.0-While">
+        <div>While I verify number 43 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.47.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.47.1-And">
+        <div>And i echo 44 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.48.0-While">
+        <div>While I verify number 44 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.49.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.49.1-And">
+        <div>And i echo 45 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.50.0-While">
+        <div>While I verify number 45 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.51.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.51.1-And">
+        <div>And i echo 46 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.52.0-While">
+        <div>While I verify number 46 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.53.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.53.1-And">
+        <div>And i echo 47 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.54.0-While">
+        <div>While I verify number 47 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.55.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.55.1-And">
+        <div>And i echo 48 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.56.0-While">
+        <div>While I verify number 48 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.57.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.57.1-And">
+        <div>And i echo 49 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.58.0-While">
+        <div>While I verify number 49 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.59.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.59.1-And">
+        <div>And i echo 50 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.60.0-While">
+        <div>While I verify number 50 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.61.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.61.1-And">
+        <div>And i echo 51 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.62.0-While">
+        <div>While I verify number 51 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.63.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.63.1-And">
+        <div>And i echo 52 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.64.0-While">
+        <div>While I verify number 52 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.65.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.65.1-And">
+        <div>And i echo 53 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.66.0-While">
+        <div>While I verify number 53 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.67.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.67.1-And">
+        <div>And i echo 54 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.68.0-While">
+        <div>While I verify number 54 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.69.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.69.1-And">
+        <div>And i echo 55 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.70.0-While">
+        <div>While I verify number 55 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.71.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.71.1-And">
+        <div>And i echo 56 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.72.0-While">
+        <div>While I verify number 56 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.73.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.73.1-And">
+        <div>And i echo 57 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.74.0-While">
+        <div>While I verify number 57 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.75.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.75.1-And">
+        <div>And i echo 58 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.76.0-While">
+        <div>While I verify number 58 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.77.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.77.1-And">
+        <div>And i echo 59 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.78.0-While">
+        <div>While I verify number 59 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.79.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.79.1-And">
+        <div>And i echo 60 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.80.0-While">
+        <div>While I verify number 60 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.81.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.81.1-And">
+        <div>And i echo 61 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.82.0-While">
+        <div>While I verify number 61 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.83.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.83.1-And">
+        <div>And i echo 62 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.84.0-While">
+        <div>While I verify number 62 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.85.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.85.1-And">
+        <div>And i echo 63 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.86.0-While">
+        <div>While I verify number 63 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.87.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.87.1-And">
+        <div>And i echo 64 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.88.0-While">
+        <div>While I verify number 64 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.89.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.89.1-And">
+        <div>And i echo 65 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.90.0-While">
+        <div>While I verify number 65 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.91.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.91.1-And">
+        <div>And i echo 66 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.92.0-While">
+        <div>While I verify number 66 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.93.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.93.1-And">
+        <div>And i echo 67 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.94.0-While">
+        <div>While I verify number 67 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.95.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.95.1-And">
+        <div>And i echo 68 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.96.0-While">
+        <div>While I verify number 68 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.97.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.97.1-And">
+        <div>And i echo 69 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.98.0-While">
+        <div>While I verify number 69 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.99.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.99.1-And">
+        <div>And i echo 70 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.100.0-While">
+        <div>While I verify number 70 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.101.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.101.1-And">
+        <div>And i echo 71 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.102.0-While">
+        <div>While I verify number 71 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.103.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.103.1-And">
+        <div>And i echo 72 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.104.0-While">
+        <div>While I verify number 72 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.105.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.105.1-And">
+        <div>And i echo 73 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.106.0-While">
+        <div>While I verify number 73 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.107.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.107.1-And">
+        <div>And i echo 74 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.108.0-While">
+        <div>While I verify number 74 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.109.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>1ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.109.1-And">
+        <div>And i echo 75 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.110.0-While">
+        <div>While I verify number 75 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.111.0-Then">
+        <div>Then I increase variable &quot;SetVar&quot; by 1</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.111.1-And">
+        <div>And i echo 76 ($SetVar)</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Pass</div>
+
+    </li>    <li id="step-module-0.3.1.4.1.1.112.0-While">
+        <div>While I verify number 76 ($SetVar) is less than or equal to 75</div>
+<a href="#!" class="hide-for-print"></a>
+      <div>0ms</div>
+      <div class="end">Fail</div>
+
+    </li>
+    </ul>
+  </div>
+</section>
+            <section>
+                <small>Tryon Solutions and Cycle are registered trademarks of Tryon Solutions, Inc. Copyright &copy; 2021, Tryon Solutions, Inc. All rights reserved. Functionality may be covered by one or more United States Patents and patents pending.</small>
+            </section>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+[ {
+  "resources" : "..\\..",
+  "classes" : [ ],
+  "namespaces" : [ ]
+}, {
+  "name" : "Telehack Terminal group",
+  "feature" : "..\\Terminal Group Testing.feature",
+  "devices" : "..\\..\\Telehack\\Telehack Inputs\\Telehack Inputs.csv",
+  "tags" : "",
+  "enabled" : "false"
+} ]
