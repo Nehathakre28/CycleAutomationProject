@@ -1,1 +1,2 @@
 child1 branch is added
+child1 is merged
