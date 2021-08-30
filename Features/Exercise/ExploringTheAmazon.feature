@@ -1,5 +1,6 @@
 #############################################################
 #Test case:ExploringTheAmazon.feature 
+#Date:30/08/2021
 #Description: Verifying various actions can be performed on the Amazon website 
 #Author:Neha Thakre
 #website:Amazon
