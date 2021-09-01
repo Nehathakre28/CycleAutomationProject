@@ -35,14 +35,15 @@ Scenario: Open Browser to Specified Page
 # Outputs:
 #	None
 #############################################################
-Given I open $browser web browser
-Then I navigate to $dstWebsite in web browser
-And I wait  $wait_short seconds
-Then I navigate to $dstWebpage in web browser 
-And I wait  $wait_short seconds
-Then I see element "xPath://a[@aria-label='Amazon']" in web browser
-Then I echo "I am on Amazon Home Page"
-And I wait  $wait_short seconds
+Given  I "open the browser and navigate the website"
+	When I open $browser web browser
+	Then I navigate to $dstWebsite in web browser
+		And I wait  $wait_short seconds
+	Then I navigate to $dstWebpage in web browser 
+		And I wait  $wait_short seconds
+	Once I see element "xPath://a[@aria-label='Amazon']" in web browser
+		Then I echo "I am on Amazon Home Page"
+			And I wait  $wait_short seconds
 
 
 @wip @public
@@ -60,15 +61,16 @@ Scenario: Return to Amazon Homepage
 # Note: You do not have to use the starter xPath below. It 
 #     is only there to help you get started. 
 #############################################################
-Given I click element "xPath://a[@id='nav-logo-sprites']" in web browser
-Then I echo "Return to Amazon Homepage"
-And I wait $wait_long seconds
+Given I "return to the Amazon Homepage"
+	When I click element "xPath://a[@id='nav-logo-sprites']" in web browser
+	Then I echo "Return to Amazon Homepage"
+		And I wait $wait_long seconds
 
 
 @wip @public
 Scenario: Search for Item
 #############################################################
-# Description: Searches for an item in the Amazong search bar
+# Description: Searches for an item in the Amazon search bar
 # Inputs: Create a variable so that you can reuse this
 #     scenario for multiple items
 #	Optional:
@@ -78,13 +80,15 @@ Scenario: Search for Item
 # Note: You can search the Step Guide under the Help menu to 
 #     find a step that takes a screenshot of the web browser
 #############################################################
-Given I assign "compass" to variable "searchPhrase"
-And I wait $wait_med seconds
-Then I type $searchPhrase in element "xPath://input[@id='twotabsearchtextbox']" in web browser 
-And I wait  $wait_short seconds
-Then I click element "xPath://input[@id='nav-search-submit-button']" in web browser
-And I wait  $wait_short seconds
-Then I save screenshot
+Given I "searches for an item"
+	When I assign "compass" to variable "searchPhrase"
+		And I wait $wait_med seconds
+	Then I type $searchPhrase in element "xPath://input[@id='twotabsearchtextbox']" in web browser 
+		And I wait  $wait_short seconds
+	Then I click element "xPath://input[@id='nav-search-submit-button']" in web browser
+		And I wait  $wait_short seconds
+		Then I save screenshot
+
 
 @wip @public
 Scenario: Navigate to Best Seller
@@ -103,12 +107,12 @@ Scenario: Navigate to Best Seller
 #     down into the specific element.
 #############################################################
 Given I "navigate to the Best Sellers page"
-Then I click element "xPath://a[text()='Best Sellers']" in web browser
-And I wait $wait_long seconds
-If I see element "xPath://div[text()='Amazon Bestsellers']" in web browser
-Then I echo "We are on the Best Sellers page"
-else I echo "We are not on the Best Sellers page"
-EndIf
+	When I click element "xPath://a[text()='Best Sellers']" in web browser
+		Then I wait $wait_long seconds
+	If I see element "xPath://div[text()='Amazon Bestsellers']" in web browser
+		Then I echo "We are on the Best Sellers page"
+	else I echo "We are not on the Best Sellers page"
+	EndIf
 
 
 @wip @public
@@ -124,18 +128,16 @@ Scenario: Prime Video Selection
 # Outputs:
 #	None
 #############################################################
-Given I click element "xPath:(//span[text()='All'])[2]" in web browser
-And I wait  $wait_short seconds
-
-Then I click element "xPath://div[text()='Amazon Prime Video']" in web browser
-And I wait  $wait_short seconds
-
-Then I click element "xPath://a[text()='All Videos']" in web browser
-And I wait  $wait_short seconds
-
-If I see element "xPath://h1[text()='Welcome to Prime Video']" in web browser
-Then I echo "I am on Prime Video page"
-else I echo "I am not on Prime Video page"
-EndIf
-And I wait $wait_med seconds
-And I close web browser
+Given I "navigate to Prime Video"
+	When I click element "xPath:(//span[text()='All'])[2]" in web browser
+		Then I wait  $wait_short seconds
+	Then I click element "xPath://div[text()='Amazon Prime Video']" in web browser
+		And I wait  $wait_short seconds
+	Then I click element "xPath://a[text()='All Videos']" in web browser
+		And I wait  $wait_short seconds
+	If I see element "xPath://h1[text()='Welcome to Prime Video']" in web browser
+		Then I echo "I am on Prime Video page"
+	else I echo "I am not on Prime Video page"
+	EndIf
+	And I wait $wait_med seconds
+	

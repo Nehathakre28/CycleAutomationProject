@@ -1,26 +1,30 @@
 {
   "additionalData" : {
-    "openTabs" : [ ]
+    "openTabs" : [ {
+      "filePath" : "D:\\CycleProject\\Test\\Features\\WMS\\Test Case BASE-INV-1010 Utilities.feature"
+    }, {
+      "filePath" : "D:\\CycleProject\\Test\\Features\\WMS\\Test Case BASE-INV-1010.feature"
+    } ]
   },
   "settings" : {
     "EmailUsername" : "",
-    "DatastoreUrl" : "localhost:3306/example",
-    "CustomChromeBrowserLocation" : "C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe",
+    "DatastoreUrl" : "",
+    "CustomChromeBrowserLocation" : "C:\\Program Files\\chromedriver.exe",
     "DatastoreName" : "",
     "SenderEmailAddress" : "",
     "StoredCredentials" : [ ],
     "SendEmailSummary" : false,
-    "CloseBrowserAfterScenario" : true,
-    "DatastorePassword" : "mysql@123",
-    "WinAppDriverForceCloseLocalApp" : true,
+    "CloseBrowserAfterScenario" : false,
+    "DatastorePassword" : "",
+    "WinAppDriverForceCloseLocalApp" : false,
     "IEDriverLocation" : "C:\\Users\\dP-PL",
     "EdgeDriverLocation" : "C:\\Users\\dP-PL",
     "UseCustomChromeLocation" : false,
     "EmailHost" : "",
-    "CloseBrowserOnCycleExit" : true,
+    "CloseBrowserOnCycleExit" : false,
     "WinAppDriverLocation" : "C:\\Program Files (x86)\\Windows Application Driver\\WinAppDriver.exe",
     "EmailProtocol" : "SSL",
-    "DatastoreUsername" : "root",
+    "DatastoreUsername" : "",
     "EmailPassword" : "",
     "ProduceLocalReport" : false,
     "IncludeStepsInGroupTestReports" : false,
@@ -30,7 +34,7 @@
     "WriteToDatastore" : false,
     "OutputDirectory" : "Output",
     "EmailPort" : 0,
-    "DatastoreType" : "MySQL",
+    "DatastoreType" : "",
     "DatastoreConnection" : "JDBC",
     "ProduceLocalCsv" : false
   }

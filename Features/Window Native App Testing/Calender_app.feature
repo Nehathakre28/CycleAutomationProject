@@ -34,6 +34,6 @@ Scenario: Window Native App Testing
 #############################################################
 Given I "opem window app with ID"
 	When I open app "Calendar" with id "microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar"
-    Then I click object "automationId:Day_2021-08-05T00:00:00Z" in app within 3 seconds
-    And I wait 5 seconds
-    Then I close app
+    	Then I click object "automationId:Day_2021-08-05T00:00:00Z" in app within 3 seconds
+    	And I wait 5 seconds
+    	Then I close app

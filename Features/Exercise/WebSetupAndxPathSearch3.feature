@@ -1,19 +1,38 @@
-Feature: Exercise3
+#############################################################
+#Test case: WebSetupAndxPathSearch1.feature 
+#Description: Verifying that Cycle can open the web browser, navigate to Google.com, and then close itself by running the test
+#Author: Neha Thakre
+#website:
+#Functional Area: Web
+#Test Case Type: Regression
+#Dataset: None
+#Test Case Inputs: None
+#Test Case Detail Input CSV: None
+#Date:
+####################################################################
+Feature:  Web Setup and xPath Search Feature
 
 Background: 
-Given I assign "chrome" to variable "browser"
-Given I assign "https://www.tryonsolutions.com" to variable "destinationWebsite"
-Given I import scenarios from "WebSetupAndxPathSearch1.feature"
-And I execute scenario "Browser Verification"
+###############################################################
+# Description: Imports dependencies and variables declartion
+###############################################################
+Given I import scenarios from "Utilities/Environment.feature"
+	Then I execute scenario "Setup Wait Times"
+	And I import scenarios from "WebSetupAndxPathSearch1.feature"
+	Then I execute scenario "Browser Verification"
+	Then I assign "chrome" to variable "browser"
+	And I assign "https://www.tryonsolutions.com" to variable "destinationWebsite"
 
-Scenario: Scenario
-Given I open $browser web browser
-And I wait 2 seconds
-Then I navigate to $destinationWebsite in web browser 
-Given I wait 2 seconds
-If I see element "xPath://img[@alt='Tryon Solutions']" in web browser
-Then I echo "I am on right page"
-Else I echo "I am not on right page"
-EndIf
-Then I wait 5 seconds
-And I close web browser
+Scenario: Browser Verification
+Given  I "open the browser and navigate the website"
+	When I open $browser web browser
+	Then I wait $wait_short seconds
+	Then I navigate to $destinationWebsite in web browser 
+	And I wait $wait_short seconds
+And I "verifying right page"    
+	If I see element "xPath://img[@alt='Tryon Solutions']" in web browser
+		Then I echo "I am on right page"
+	Else I echo "I am not on right page"
+	EndIf
+	And I wait $wait_med seconds
+	Then I close web browser

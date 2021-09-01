@@ -1,8 +1,10 @@
 Feature:Test Case BASE-INV-1010 Utilities
 
-Background: 
 
 
+
+@wip @public
+Scenario:Search for the Location on the Inventory Screen
 ###########################################################
 #Description:Search for the Location on the Inventory Screen
 #Browser:Chrome
@@ -12,7 +14,6 @@ Background:
 #Output:
 #       Successfully Search the Location Inventory screen
 ############################################################
-Scenario:Search for the Location on the Inventory Screen
 Given I see element "xPath://input[@id='rpFilterComboBox-1043-inputEl']" in web browser
 And I wait 5 seconds
 Then I type "CYCPALLOC7" in element "xPath://input[@id='rpFilterComboBox-1043-inputEl']" in web browser
@@ -21,6 +22,9 @@ And I wait 2 seconds
 Then I click element "xPath://span[text()=' in Location']" in web browser
 And I wait 5 seconds
 
+
+@wip @public
+Scenario: Check that the Location and Click on the Actions drop-down
 ###########################################################
 #Description:Check that the Location and Click on the Actions drop-down
 #Browser:Chrome
@@ -31,7 +35,6 @@ And I wait 5 seconds
 #Output:
 #   Successfully Check the Location and Click on the Actions drop-down
 ############################################################
-Scenario: Check that the Location and Click on the Actions drop-down
 Given I " Check that the Location"
 Then I click element "xPath://div[@class='x-grid-row-checker']" in web browser
 And I wait 2 seconds
@@ -42,6 +45,10 @@ If I see element "xPath://span[text()='Add Inventory']" in web browser
 Then I echo "I am on Add inventory Page"
 else I echo "I am not on Add inventory Page"
 EndIf
+
+
+@wip @public
+Scenario: Enter the Required Fields
 ###########################################################
 #Description:Enter the Required Fields
 #Browser:Chrome
@@ -51,7 +58,6 @@ EndIf
 #Output:
 # Successfully Enter the Required Fields And Click on next button
 ############################################################
-Scenario: Enter the Required Fields
 Given I type "CYC_LPN_NT05" in element "xPath://input[@id='textfield-2222-inputEl']" in web browser
 And I wait 5 seconds
 Then I see element "xPath://input[@id='itemLookup-2224-inputEl']" in web browser
@@ -74,6 +80,9 @@ And I wait 3 seconds
 Then I click element "xPath://span[@id='button-2217-btnIconEl']" in web browser
 And I wait 5 seconds
 
+
+@wip @public
+Scenario: Confirm Return to the Location Screen
 ###########################################################
 #Description:Confirm Return to the Location Screen
 #Browser:Chrome
@@ -84,7 +93,6 @@ And I wait 5 seconds
 # Adjustment Successful
 # Successfully Return to the Location Screen
 ############################################################
-Scenario: Confirm Return to the Location Screen
 Given I "Adjustment Successful"
 If I see element "xPath://span[@id='wm-inventorydisplay-inventorydisplay_header_hd-textEl']" in web browser
 Then I echo "Adjustment Successful"
@@ -92,6 +100,8 @@ else I echo "Adjustment Not Successful"
 EndIf
 And I wait 5 seconds
 
+@wip @public
+Scenario: Logout WMS
 ###########################################################
 #Description:logout WMS
 #Browser:Chrome
@@ -102,7 +112,6 @@ And I wait 5 seconds
 #Output:
 #     Logout Successfully 
 ############################################################
-Scenario: Logout WMS
 Given I "Logout"
 If I see element "xPath://span[text()='NEHA.THAKRE']" in web browser
 Then I click element "xPath://span[@id='ext-comp-1012-btnIconEl']" in web browser

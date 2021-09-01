@@ -1,4 +1,4 @@
-Feature: Test Case: BASE-INV-1010 Add feature
+Feature: Test Case: BASE-INV-1010 Add Feature
 
 
 Background: 

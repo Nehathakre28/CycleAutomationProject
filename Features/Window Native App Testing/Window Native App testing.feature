@@ -39,10 +39,10 @@ Scenario: Window Native App Testing
 #############################################################
 Given I "opem window app with ID"
 	When I open app "Calculator" with id "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"
-    And I "Clicking numbers in calculator"
+   	 	Then I "Clicking numbers in calculator"
 	Then I click object "automationId:num8Button" in app within $min_time seconds
     Then I click object "automationId:num6Button" in app within $min_time seconds
-    And I click object "automationId:plusButton" in app within $min_time seconds
+    Then I click object "automationId:plusButton" in app within $min_time seconds
     Then I click object "automationId:num5Button" in app within $min_time    seconds
     Then I click object "automationId:num1Button" in app within $min_time   seconds
     Then I click object "automationId:equalButton" in app within $min_time    seconds
