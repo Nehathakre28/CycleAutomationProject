@@ -6,3 +6,4 @@ And I navigate to "https://www.toolsqa.com/cucumber/behavior-driven-development/
 Then I see image "Image:Images\Image.PNG" in web browser
 Then I save screenshot
 Then I close browser
+
